@@ -22,7 +22,7 @@ class OTA:
                     if data[self.branch] == ver:
                         return False
                     else:
-                        return ver
+                        return data[self.branch]
                 except BaseException as e:
                     return False
 
@@ -35,9 +35,14 @@ class OTA:
             backup_folder = path+"_backup_"
             try:
                 os.mkdir(backup_folder)
-            except BaseException as E:
-                return False
+            except BaseException as e:
+                pass
             all_files = os.listdir(path)
+            try:
+                all_files.remove("_backup_")
+                all_files.remove("config.py")
+            except BaseException as e:
+                pass
             for file in all_files:
                 try:
                     new = path+file+'/'
@@ -54,6 +59,7 @@ class OTA:
 
     def update(self, new_version):
         """Update"""
+        print("update", new_version)
         version_url = self.server_url+'/server/ota/{}/{}'.format(self.branch, new_version)
         firmware_url = version_url+'/firmware/'
         files_url = version_url+"/files.json"
@@ -70,7 +76,10 @@ class OTA:
                             try:
                                 data = os.listdir(dir)
                             except BaseException as e:
-                                os.mkdir(dir)
+                                try:
+                                    os.mkdir(dir)
+                                except BaseException as e:
+                                    pass
                         for url in urls:
                             filepath = url.replace(firmware_url, '/flash/')
                             content = self.__download_content__(url)
@@ -92,6 +101,11 @@ class OTA:
             path = '/flash/'
             backup_folder = path + "_backup_"
             all_files = os.listdir(backup_folder)
+            try:
+                all_files.remove("_backup_")
+                all_files.remove("config.py")
+            except BaseException as e:
+                pass
             for file in all_files:
                 try:
                     new = backup_folder+'/'+ file + '/'
@@ -112,21 +126,23 @@ class OTA:
     def __download_content__(self, url):
         """downloads file content"""
         try:
-            request = requests.get(url=url)
-            if request.status_code is 200:
-                return request.content
+            print("download", url)
+            request = requests.get(url)
+            if request[0] is 200:
+                return request[2]
             else:
                 return False
-        except requests.exceptions.RequestException as e:
+        except BaseException as e:
             return False
 
     def __ping__(self, url):
         """Send get request to specified url."""
         try:
-            request = requests.get(url=url)
-            if request.status_code is 200:
+            print("ping", url)
+            request = requests.get(url)
+            if request[0] is 200:
                 return True
             else:
                 return True
-        except requests.exceptions.RequestException as e:
+        except BaseException as e:
             return False

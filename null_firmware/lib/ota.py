@@ -47,8 +47,11 @@ class OTA:
                 try:
                     new = path+file+'/'
                     backup_path = backup_folder+'/'+file
-                    alf = os.listdir(new)
-                    os.mkdir(backup_path)
+                    alf = os.listdir(path+file)
+                    try:
+                        os.mkdir(backup_path)
+                    except BaseException as e:
+                        pass
                     for f in alf:
                         os.rename(new+f, backup_path+'/'+f)
                 except BaseException as e:
@@ -110,7 +113,7 @@ class OTA:
                 try:
                     new = backup_folder+'/'+ file + '/'
                     backup_path = path + file
-                    alf = os.listdir(new)
+                    alf = os.listdir(backup_folder+'/'+ file)
                     try:
                         os.mkdir(backup_path)
                     except BaseException as e:

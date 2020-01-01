@@ -1,0 +1,16 @@
+{
+    "files": [
+        "https://ophoperhpo.github.io/neoled/server/ota/stable/0-02/firmware/current_version",
+        "https://ophoperhpo.github.io/neoled/server/ota/stable/0-02/firmware/main.py",
+        "https://ophoperhpo.github.io/neoled/server/ota/stable/0-02/firmware/boot.py",
+        "https://ophoperhpo.github.io/neoled/server/ota/stable/0-02/firmware/lib/ota.py",
+        "https://ophoperhpo.github.io/neoled/server/ota/stable/0-02/firmware/lib/effects.py",
+        "https://ophoperhpo.github.io/neoled/server/ota/stable/0-02/firmware/lib/utils.py",
+        "https://ophoperhpo.github.io/neoled/server/ota/stable/0-02/firmware/lib/rescue_tools.py",
+        "https://ophoperhpo.github.io/neoled/server/ota/stable/0-02/firmware/lib/led.py",
+        "https://ophoperhpo.github.io/neoled/server/ota/stable/0-02/firmware/lib/button.py"
+    ],
+    "dirs": [
+        "/flash/lib"
+    ]
+}

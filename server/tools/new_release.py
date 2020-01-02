@@ -52,8 +52,8 @@ def main():
         firmware_path = os.path.join(update_path, "firmware")
         print("Create folders in {}".format(update_path))
         os.makedirs(update_path)
-        print("Copy files from ../../firmware to {}".format(update_path))
-        shutil.copytree("../../firmware", firmware_path)
+        print("Copy files from ../../ota_firmware to {}".format(update_path))
+        shutil.copytree("../../ota_firmware", firmware_path)
         print("Create current_version file")
         with open(os.path.join(firmware_path, "current_version"), "w") as f:
             f.write(update_version)

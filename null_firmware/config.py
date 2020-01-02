@@ -1,4 +1,5 @@
 # Standard config file for ESP32
+# Developed by Anodev Development (OPHoperHPO) (https://github.com/OPHoperHPO)
 
 class Wifi:
     """Wifi settings"""

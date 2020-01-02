@@ -1,3 +1,5 @@
+# Touch button handler
+# Developed by Anodev Development (OPHoperHPO) (https://github.com/OPHoperHPO)
 import time
 import _thread
 from machine import Pin, TouchPad

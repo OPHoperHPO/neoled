@@ -2,9 +2,10 @@
 import os
 import json
 import shutil
+from config_tools import OTA_Tools
 
 TOOL = "stable"
-SERVER_URL = "https://ophoperhpo.github.io/neoled/server"  # For files.json
+SERVER_URL = OTA_Tools.server  # For files.json
 
 def open_json(path: str):
     """Opens json"""

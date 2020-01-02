@@ -2,9 +2,10 @@
 import os
 import json
 import shutil
+from config_tools import OTA_Tools
 
 TOOL = "dev"
-SERVER_URL = "https://123.rt/server"  # For files.json
+SERVER_URL = OTA_Tools.server  # For files.json
 
 def open_json(path: str):
     """Opens json"""
